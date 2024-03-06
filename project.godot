@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="MIDI Piano Demo"
+config/name="MIDI Piano"
 config/tags=PackedStringArray("audio", "demo", "official")
 run/main_scene="res://piano.tscn"
 config/features=PackedStringArray("4.2")
