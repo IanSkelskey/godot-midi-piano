@@ -29,9 +29,7 @@ func _ready():
 	if white_keys.get_child_count() != black_keys.get_child_count():
 		_add_placeholder_key(black_keys)
 
-	# Open MIDI inputs to receive events from connected MIDI devices.
-	OS.open_midi_inputs()
-	print(OS.get_connected_midi_inputs()) # Log the detected MIDI devices.
+	open_midi_inputs() # Open MIDI inputs to receive events from connected MIDI devices.
 
 func _input(input_event):
 	# Process only MIDI input events.
@@ -49,6 +47,7 @@ func _input(input_event):
 	var key: PianoKey = piano_key_dict[midi_event.pitch]
 	if midi_event.message == MIDI_MESSAGE_NOTE_ON:
 		key.activate(midi_event.velocity)
+		$"../CurrentNote".text = key.note_name
 	else:
 		key.deactivate()
 
@@ -102,3 +101,12 @@ func _print_midi_info(midi_event: InputEventMIDI):
 	print("Pressure: " + str(midi_event.pressure))
 	print("Controller number: " + str(midi_event.controller_number))
 	print("Controller value: " + str(midi_event.controller_value))
+
+func open_midi_inputs():
+	OS.open_midi_inputs()
+	print(OS.get_connected_midi_inputs()) # Log the detected MIDI devices.
+	
+
+func _on_midi_device_refresh_button_pressed():
+	open_midi_inputs()
+

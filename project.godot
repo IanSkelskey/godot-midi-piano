@@ -12,14 +12,14 @@ config_version=5
 
 config/name="MIDI Piano"
 config/tags=PackedStringArray("audio", "demo", "official")
-run/main_scene="res://piano.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.webp"
 
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=200
+window/size/viewport_height=720
 
 [dotnet]
 
