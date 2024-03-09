@@ -25,6 +25,10 @@ window/size/viewport_height=720
 
 project/assembly_name="MIDI Piano Demo"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_midi/plugin.cfg")
+
 [network]
 
 limits/debugger_stdout/max_chars_per_second=2048000

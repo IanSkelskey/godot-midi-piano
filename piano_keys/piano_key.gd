@@ -7,6 +7,8 @@ extends Control
 const BASE_PITCH_INDEX = 69 # The MIDI note number for A4 (440 Hz). This is the frequency of the base audio sample.
 const SEMITONES_PER_OCTAVE: float = 12.0
 
+var pitch_index: int
+
 # Variable to store the pitch scale of the piano key. This scale adjusts
 # the pitch of the sound played when the key is activated.
 var pitch_scale: float
@@ -24,9 +26,17 @@ var note_name: String
 
 # setup function initializes the piano key with the correct pitch scale based on its pitch index.
 # pitch_index: MIDI note number for the key.
-func setup(pitch_index: int):
+func setup(index: int):
+	pitch_index = index # Store the pitch index for later use.
 	pitch_scale = get_pitch_scale(pitch_index) # Calculate the pitch scale based on the pitch index.
 	note_name = get_note_name(pitch_index) # Get the note name based on the pitch index.
+	get_parent().get_parent().get_parent().sound_note.connect(_sound_note)
+
+func _sound_note(note: int):
+	if note == pitch_index:
+		activate(127)
+		await get_tree().create_timer(0.5).timeout
+		deactivate()
 
 # activate function changes the key's color and plays its sound with appropriate pitch and volume.
 # velocity: The MIDI velocity with which the key was pressed, affects the volume of the sound.
