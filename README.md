@@ -1,5 +1,7 @@
 # MIDI Piano
 
+![Logo](logo_4x.png)
+
 This demo shows how to use
 [InputEventMIDI](https://docs.godotengine.org/en/latest/classes/class_inputeventmidi.html)
 by creating a piano that can be controlled by a MIDI device.

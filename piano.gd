@@ -41,7 +41,7 @@ func _input(input_event):
 	if midi_event.pitch < START_KEY or midi_event.pitch > END_KEY:
 		return
 
-	_print_midi_info(midi_event) # Debugging: Print information about the MIDI event.
+	# _print_midi_info(midi_event) # Debugging: Print information about the MIDI event.
 
 	# Activate or deactivate the corresponding key visual based on MIDI message.
 	var key: PianoKey = piano_key_dict[midi_event.pitch]
