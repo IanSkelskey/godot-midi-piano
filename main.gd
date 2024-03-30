@@ -46,6 +46,7 @@ func _process_notes(delta):
 		if note.position.y > 497:
 			notes.remove_at(notes.find(note))
 			note.queue_free()
+			
 
 func on_note(event, track):
 	print("Event: ", event, " Track: ", track)
